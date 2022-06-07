@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%block title%}Blog{%endblock%}
+
+{% block content %}
+    <h1>Xino Blogs</h1>
+    <br>
+    <ul class="post">
+        {% for post in object_list %}
+            <li><p><a href="{% url 'detail' post.pk%}">{{ post.title }} - By - {{ post.author.first_name }} {{ post.author.last_name }} - {{post.date}} (IST)</a></p><br><p class="postBody">{{ post.body|slice:":100"|safe }} <a href="{%url 'detail' post.pk%}">Read more..</a></p></li>
+            <BR><BR><BR>
+        {% endfor %}
+    </ul>
+{% endblock %}

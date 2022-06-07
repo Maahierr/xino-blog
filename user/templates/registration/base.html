@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xino | {%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body vlink="blue">
+    <nav class="navbar">
+        <a href="/" class="logo"> XINO </a>
+        <input type="checkbox" id="toggler">
+        <label for="toggler">
+            ☰
+        </label>
+        <div class="menu">
+            <ul class="list">
+                <li><a href="{%url 'home'%}">Home</a></li>
+                <li><a href="{%url 'blog'%}">Blog</a></li>
+                <li><a href="{%url 'post'%}">Post</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Sign Out</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {%block content%}{% endblock%}
+    </div>
+</body>
+
+</html>

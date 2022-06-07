@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xino | {%block title%}{%endblock%}</title>
+</head>
+
+<body vlink="blue">
+    <nav class="navbar">
+        <a href="/" class="logo"> Xino Blogs </a>
+        <input type="checkbox" id="toggler">
+        <label for="toggler">
+            ☰
+        </label>
+        <div class="menu">
+            <ul class="list">
+                <li><a href="{%url 'home'%}">Home</a></li>
+                <li><a href="{%url 'blog'%}">Blogs</a></li>
+
+                {%if user.is_authenticated%}
+                <li><a href="{%url 'post'%}">Post</a></li>
+                <li><a href="{%url 'logout'%}">Logout</a></li>
+                {%else%}
+                <li><a href="{%url 'login'%}">Login</a></li>
+                <li><a href="{%url 'register'%}">Register</a></li>
+                {%endif%}
+
+                {% if request.user.is_superuser %}
+                <li><a href="/admin" target="_blank">Admin</a></li>
+                {% else %}
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {%block content%}{% endblock%}
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            Justify-content: space-between;
+            background-color: rgb(0, 0, 0);
+            color: #fff;
+            padding: 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo {
+            font-size: 26px;
+        }
+
+        .list {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            font-size: 26px;
+        }
+
+        #toggler,
+        .navbar label {
+            display: none;
+            font-size: 26px;
+        }
+
+        @media screen and (max-width:600px) {
+            .menu {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+            }
+
+            .list {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .navbar label {
+                display: inline-flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            #toggler:checked~.menu {
+                max-height: 100%;
+            }
+        }
+
+        .container {
+            margin: 20px 30px;
+        }
+
+        .post {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .post li {
+            font-size: 20px;
+            list-style: none;
+        }
+
+        .post li a {
+            text-decoration: none;
+            color: rgb(255, 0, 0);
+        }
+
+        .post li a:hover {
+            text-decoration: underline;
+        }
+
+        .postBody,
+        .postAuthor {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .username {
+            color: red;
+        }
+
+        .username:hover {
+            color: black;
+        }
+
+        .btn {
+            background: rgb(81, 177, 255);
+            border: 3px solid white;
+            display: block;
+            width: 120px;
+            padding: 8px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            transition: all 1s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: rgb(96, 96, 255);
+            box-shadow: 5px 5px 5px rgb(96, 96, 255);
+        }
+
+        .p-btn {
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .form {
+            font-size: 20px;
+        }
+
+        .form-body,
+        .form-author,
+        .form-title,
+        .form-email,
+        .form-name,
+        .form-user,
+        .form-password,
+        #id_username,
+        #id_password {
+            width: 100%;
+            margin: 10px;
+            padding: 5px;
+            font-size: 15px;
+        }
+
+        .errorlist {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

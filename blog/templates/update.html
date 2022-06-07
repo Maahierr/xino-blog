@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{%block title%}Update Your Blog{%endblock%}
+
+{% block content %}
+    {%if user.is_authenticated%}
+        {%if user.id == post.author.id%}
+            <h1>Add Your Blog Post Here....</h1>
+            <br><br><br>
+            <form method="POST" class="form">
+                {%csrf_token%}
+                {{form.as_p}}
+                <br><br>
+                <button class="btn p-btn">Update</button>
+        {%else%}
+            <h1><center>You Are Not The User Who Posted The Blog</center></h1>
+        {%endif%}
+    {%else%}
+        <h1><center>First Register Or Login Yourself</center></h1>
+    {%endif%}
+    
+{% endblock %}

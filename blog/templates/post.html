@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block title%}Add Blog Post{%endblock%}
+
+{% block content %}
+<h1>@{{user}} Add Your Blog Post Here....</h1>
+<br>
+<h3>Instructions</h3><br>
+<ul>
+    <li>This Post Is Done To Inform The Users That You Can Write anything In this Blog including <b>Alphabets, Numbers, Special Characters and Emojis</b></li>
+    <li><b>You Can Also Write <u>HTML, Css And Js</u> using HTML In Body Of Blog</u></b></li>
+    <li>The Posts Will Be Public and can be viewed by <b>ANYONE</b> but only the <b><u>Post Authors have a Right to Edit and Delete Posts</u></b></li>
+</ul>
+<br><br>
+<form method="POST" class="form">
+    {%csrf_token%}
+    {{form.as_p}}
+    <br><br>
+    <button class="btn p-btn">Post</button>
+    <script>
+        var user = "{{user.id}}";
+        document.getElementById("user").value = user;
+    </script>
+    {% endblock %}

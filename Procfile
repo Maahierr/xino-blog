@@ -1,0 +1,1 @@
+web: gunicorn xino.wsgi --log-file -

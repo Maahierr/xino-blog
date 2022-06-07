@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{%block title%}Home{%endblock%}
+
+{% block content %}
+    {%if user.is_authenticated%}
+        <h2><center>Welcome @{{user}}</center></h2><br><br>
+        <h3>This Is Your Profile:-</h3><br>
+        <p style="margin-left: 10px; font-size: 20px;">Your Username is: <b>{{user.username}}</b></p>
+        <p style="margin-left: 10px; font-size: 20px;">Your Email Id is: <b>{{user.email}}</b></p>
+        <p style="margin-left: 10px; font-size: 20px;">Your Name is: <b>{{user.first_name}} {{user.last_name}}</b></p>
+    {%else%}
+        <h3><center>Register Or Login To Continue</center></h3>
+    {%endif%}
+{% endblock%}

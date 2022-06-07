@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{%block title%}Post By @{{post.author}}{%endblock%}
+
+{% block content %}
+    <h1>{{post.title}}</h1><br>
+    <h4 class="postAuthor">By :- {{post.author.first_name}} {{post.author.last_name}} - {{post.date}} (IST) - <a href ="#" class="username">@{{post.author}}</a>
+        {%if user.is_authenticated%}
+            {%if user.id == post.author.id%}
+                - <small><a href="{%url 'update' post.pk%}">(Edit)</a></small> - <small><a href="{%url 'delete' post.pk%}">(Delete Post)</a></small></h4>
+            {%else%}
+                </h4>      
+            {%endif%}
+        {%endif%}
+        
+    <br>
+    <hr>
+    <br>
+    <p class="postBody">{{post.body|safe}}</p>
+    <br><br><br>
+    <a href="{%url 'blog'%}" class="btn">View Posts</a>
+{% endblock %}
