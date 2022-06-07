@@ -1,1 +1,1 @@
-# xino-blog
+# Dynamic Blog Post WebSite
